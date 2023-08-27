@@ -1,34 +1,31 @@
 #include<iostream>;
 using namespace std;
 
-int float()
+int main()
 {
 	setlocale(LC_ALL, "Rus");
-	unsigned int order = 64;
+	unsigned int order = 32;
 	unsigned int mask = 1 << order - 1;
 	union {
-		int arr[2];
-		double numb_f = -228;
+		int tool;
+		float numb_f = -2.718;
 	};
-	cout << "Chislo v desiatichnoi sisteme schislenia: " << numb_f << endl;
-	cout << " Chislo, zapisannoe soglasno standartu ieee-754: ";
-	for (int n = 1; n >= 0; n--)
+
+	cout << "Decimal system: " << numb_f << endl;
+
+
+	cout << "IEEE-754 Standart: ";
+	for (int i = 1; i <= order; i++)
 	{
-		for (int i = 1; i <= order / 2; i++)
+		putchar(tool & mask ? '1' : '0');
+		tool <<= 1;
+		if (i == 1)
 		{
-			putchar(arr[n] & mask ? '1' : '0');
-			arr[n] <<= 1;
-			if ((n == 1) && (i == 1))
-			{
-				putchar(' ');
-			}
-			if ((n == 1) && (i == 12))
-			{
-				putchar(' ');
-			}
+			putchar(' ');
+		}
+		if (i == 9)
+		{
+			putchar(' ');
 		}
 	}
 }
-
-
-
